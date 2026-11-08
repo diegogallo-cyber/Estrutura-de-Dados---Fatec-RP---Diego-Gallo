@@ -9,9 +9,13 @@ typedef struct NoBST {
     struct NoBST *direita;
 } NoBST;
 
-/* TODO: implementar cada operação em src/bst.c.
- * A BST deve ser ordenada pelo campo registro.id.
- */
+enum {
+    BST_ERRO = -1,
+    BST_DUPLICADO = 0,
+    BST_OK = 1
+};
+
+/* A BST é ordenada pelo ID e rejeita IDs repetidos. */
 int bst_inserir(NoBST **raiz, const Registro *registro);
 const Registro *bst_buscar(const NoBST *raiz, int id);
 int bst_remover(NoBST **raiz, int id);

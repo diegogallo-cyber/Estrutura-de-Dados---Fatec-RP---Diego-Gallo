@@ -11,11 +11,11 @@ typedef struct {
     NoFila *fim;
 } Fila;
 
-/* TODO: implementar em src/fila.c.
- * A fila é independente da BST e aceita IDs repetidos.
- */
+/* Estrutura independente da BST; IDs positivos repetidos são permitidos. */
 void fila_inicializar(Fila *fila);
+/* Retorna 1 quando insere e 0 em caso de ID inválido ou falha de alocação. */
 int fila_enfileirar(Fila *fila, int id);
+/* Retorna 1 quando remove, 0 quando vazia ou inválida. */
 int fila_desenfileirar(Fila *fila, int *id_removido);
 void fila_exibir(const Fila *fila);
 void fila_liberar(Fila *fila);

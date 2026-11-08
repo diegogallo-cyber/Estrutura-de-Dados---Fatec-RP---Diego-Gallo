@@ -1,0 +1,10 @@
+# Executáveis gerados
+locais
+locais.exe
+teste_estruturas
+teste_estruturas.exe
+
+# Arquivos temporários do compilador
+*.o
+*.obj
+*.exe
