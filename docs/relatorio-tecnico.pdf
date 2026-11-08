@@ -12,7 +12,7 @@ endobj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
 endobj
 5 0 obj
-<< /Length 1919 >>
+<< /Length 1900 >>
 stream
 BT /F2 16 Tf 50 790 Td (RELATORIO TECNICO) Tj ET
 BT /F2 12 Tf 50 769 Td (Sistema de cadastro de locais urbanos) Tj ET
@@ -20,19 +20,20 @@ BT /F1 10 Tf 50 752 Td (Disciplina: Estrutura de Dados - ADS, 3o semestre) Tj ET
 BT /F1 10 Tf 50 737 Td (Linguagem: C11 | Tema B: Locais urbanos) Tj ET
 BT /F1 10 Tf 50 722 Td (Estruturas: BST e fila dinamica | Estudante: Diego Gallo) Tj ET
 BT /F1 10 Tf 50 707 Td (Data: 8 de novembro de 2026) Tj ET
-BT /F2 12 Tf 50 682 Td (1. Objetivo e modelagem) Tj ET
-BT /F1 10 Tf 50 665 Td (O programa de terminal cadastra locais urbanos em uma BST ordenada pelo ID. Cada registro) Tj ET
-BT /F1 10 Tf 50 650 Td (guarda ID inteiro, nome, categoria e bairro. Campos textuais usam char[80], com ate 79) Tj ET
-BT /F1 10 Tf 50 635 Td (caracteres mais o terminador nulo. Espacos externos sao removidos e textos vazios rejeitados.) Tj ET
-BT /F1 10 Tf 50 610 Td (Um no da BST contem o registro e ponteiros para os filhos esquerdo e direito. IDs menores) Tj ET
-BT /F1 10 Tf 50 595 Td (ficam a esquerda, maiores a direita e duplicados sao rejeitados. A estrutura linear escolhida) Tj ET
-BT /F1 10 Tf 50 580 Td (e uma fila encadeada independente. Cada no armazena um ID positivo e um ponteiro para o) Tj ET
-BT /F1 10 Tf 50 565 Td (proximo. A fila permite IDs repetidos e nao exige cadastro correspondente na BST.) Tj ET
-BT /F1 10 Tf 50 540 Td (O menu oferece cadastro, busca, remocao e percurso em ordem da BST; insercao, remocao e) Tj ET
-BT /F1 10 Tf 50 525 Td (exibicao da fila; e encerramento. O encerramento libera os nos alocados nas duas estruturas.) Tj ET
-BT /F2 12 Tf 50 500 Td (2. Organizacao) Tj ET
-BT /F1 10 Tf 50 483 Td (Os cabecalhos estao em include/ e as implementacoes em src/. bst.c concentra as operacoes) Tj ET
-BT /F1 10 Tf 50 468 Td (da arvore; fila.c implementa a fila; entrada.c valida dados; main.c integra o menu.) Tj ET
+BT /F2 12 Tf 50 684 Td (1. Objetivo e modelagem) Tj ET
+BT /F1 10 Tf 50 667 Td (O programa cadastra locais urbanos em uma BST ordenada pelo ID. Cada registro guarda ID) Tj ET
+BT /F1 10 Tf 50 652 Td (inteiro, nome, categoria e bairro. Campos textuais usam char[80], permitindo ate 79) Tj ET
+BT /F1 10 Tf 50 637 Td (caracteres mais o terminador nulo. A entrada remove espacos externos e rejeita textos) Tj ET
+BT /F1 10 Tf 50 622 Td (vazios.) Tj ET
+BT /F1 10 Tf 50 599 Td (Um no da BST contem o registro e ponteiros para filhos esquerdo e direito. IDs menores ficam) Tj ET
+BT /F1 10 Tf 50 584 Td (a esquerda, maiores a direita; IDs duplicados sao rejeitados. A estrutura linear escolhida e) Tj ET
+BT /F1 10 Tf 50 569 Td (uma fila encadeada independente. Cada no guarda ID positivo e ponteiro para o proximo. A) Tj ET
+BT /F1 10 Tf 50 554 Td (fila permite IDs repetidos e nao exige cadastro correspondente na BST.) Tj ET
+BT /F1 10 Tf 50 531 Td (O menu oferece cadastro, busca, remocao e percurso em ordem da BST; insercao, remocao e) Tj ET
+BT /F1 10 Tf 50 516 Td (exibicao da fila; e encerramento com liberacao dos nos.) Tj ET
+BT /F2 12 Tf 50 493 Td (2. Organizacao) Tj ET
+BT /F1 10 Tf 50 476 Td (Os cabecalhos estao em include/ e as implementacoes em src/. bst.c concentra as operacoes da) Tj ET
+BT /F1 10 Tf 50 461 Td (arvore; fila.c implementa a fila; entrada.c valida dados; main.c integra o menu.) Tj ET
 BT /F1 8 Tf 50 35 Td (Relatorio tecnico - Locais urbanos | Pagina 1 de 3) Tj ET
 endstream
 endobj
@@ -40,26 +41,28 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 5 0 R >>
 endobj
 7 0 obj
-<< /Length 1991 >>
+<< /Length 2088 >>
 stream
 BT /F2 12 Tf 50 790 Td (3. Implementacao) Tj ET
 BT /F1 10 Tf 50 773 Td (A BST implementa insercao, busca, remocao e percurso em ordem. A remocao trata no sem) Tj ET
-BT /F1 10 Tf 50 758 Td (filhos, com um filho e com dois filhos; no ultimo caso, substitui pelo sucessor em ordem e) Tj ET
-BT /F1 10 Tf 50 743 Td (libera o no sucessor. O percurso em ordem apresenta IDs em ordem crescente.) Tj ET
-BT /F1 10 Tf 50 718 Td (A fila insere no final e remove do inicio, com ponteiros para inicio e fim. Ao remover o ultimo) Tj ET
-BT /F1 10 Tf 50 703 Td (elemento, ambos voltam a nulo. A estrutura possui exibicao e rotina de liberacao de memoria.) Tj ET
-BT /F1 10 Tf 50 678 Td (entrada.c le linhas com fgets e converte inteiros com strtol, verificando limites e erros.) Tj ET
-BT /F1 10 Tf 50 663 Td (IDs aceitos sao positivos e cabem em int; o menu aceita opcoes de 1 a 8. Textos vazios,) Tj ET
-BT /F1 10 Tf 50 648 Td (linhas longas demais e valores nao numericos sao rejeitados.) Tj ET
-BT /F2 12 Tf 50 623 Td (4. Testes e evidencias) Tj ET
-BT /F1 10 Tf 50 606 Td (O workflow do GitHub Actions compila aplicativo e testes com GCC e as opcoes C11,) Tj ET
-BT /F1 10 Tf 50 591 Td (-Wall, -Wextra e -pedantic. No commit 7c99adf, o workflow terminou com sucesso.) Tj ET
-BT /F1 10 Tf 50 566 Td (A suite automatizada verificou insercao e busca; ID duplicado e zero; ordem crescente;) Tj ET
-BT /F1 10 Tf 50 551 Td (remocao de folha, no com um filho e no com dois filhos; IDs ausentes; comportamento FIFO,) Tj ET
-BT /F1 10 Tf 50 536 Td (IDs repetidos e fila vazia.) Tj ET
-BT /F1 10 Tf 50 511 Td (O teste de integracao cadastrou 40, 20 e 60 no menu e conferiu a listagem 20, 40, 60.) Tj ET
-BT /F1 10 Tf 50 496 Td (Entradas textuais invalidas, limite de 79 caracteres e encerramento com dados estao descritos) Tj ET
-BT /F1 10 Tf 50 481 Td (no roteiro, mas nao foram registrados como executados nesta evidencia automatizada.) Tj ET
+BT /F1 10 Tf 50 758 Td (filhos, com um filho e com dois filhos; nesse ultimo caso, substitui pelo sucessor em ordem) Tj ET
+BT /F1 10 Tf 50 743 Td (e libera o no sucessor. O percurso em ordem apresenta IDs crescentes.) Tj ET
+BT /F1 10 Tf 50 720 Td (A fila insere no final e remove do inicio, mantendo ponteiros para inicio e fim. Ao remover) Tj ET
+BT /F1 10 Tf 50 705 Td (o ultimo elemento, ambos voltam a nulo. A estrutura possui exibicao e liberacao.) Tj ET
+BT /F1 10 Tf 50 682 Td (entrada.c le linhas com fgets e converte inteiros com strtol, verificando erros e limites.) Tj ET
+BT /F1 10 Tf 50 667 Td (IDs aceitos sao positivos e cabem em int; o menu aceita opcoes de 1 a 8. Linhas grandes) Tj ET
+BT /F1 10 Tf 50 652 Td (demais, texto vazio e valores nao numericos sao rejeitados.) Tj ET
+BT /F2 12 Tf 50 629 Td (4. Testes e evidencias) Tj ET
+BT /F1 10 Tf 50 612 Td (O workflow do GitHub Actions executou com sucesso no commit 1b0f346. GCC compilou o) Tj ET
+BT /F1 10 Tf 50 597 Td (aplicativo e os testes usando C11, -Wall, -Wextra e -pedantic.) Tj ET
+BT /F1 10 Tf 50 574 Td (A suite automatizada verificou insercao, busca, IDs duplicados e zero, ordem crescente,) Tj ET
+BT /F1 10 Tf 50 559 Td (remocao de folha, no com um filho e no com dois filhos, IDs ausentes, comportamento FIFO,) Tj ET
+BT /F1 10 Tf 50 544 Td (repeticao de IDs e fila vazia.) Tj ET
+BT /F1 10 Tf 50 521 Td (A integracao cadastrou os IDs 40, 20 e 60 pelo menu e confirmou listagem 20, 40, 60. Tambem) Tj ET
+BT /F1 10 Tf 50 506 Td (rejeitou o ID textual abc, rejeitou texto com 80 caracteres e verificou insercao/remocao na) Tj ET
+BT /F1 10 Tf 50 491 Td (fila e fila vazia.) Tj ET
+BT /F1 10 Tf 50 468 Td (O roteiro lista testes manuais adicionais, como texto vazio e valor acima de INT_MAX, que) Tj ET
+BT /F1 10 Tf 50 453 Td (nao foram registrados como executados.) Tj ET
 BT /F1 8 Tf 50 35 Td (Relatorio tecnico - Locais urbanos | Pagina 2 de 3) Tj ET
 endstream
 endobj
@@ -67,29 +70,30 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 7 0 R >>
 endobj
 9 0 obj
-<< /Length 1845 >>
+<< /Length 1850 >>
 stream
 BT /F2 12 Tf 50 790 Td (5. Analise de complexidade) Tj ET
-BT /F1 10 Tf 50 773 Td (Seja n o numero de registros da BST, h a altura, q o tamanho da fila e L o tamanho do texto.) Tj ET
-BT /F2 10 Tf 50 748 Td (Operacao Complexidade) Tj ET
-BT /F1 10 Tf 50 733 Td (Busca, insercao e remocao na BST O\(h\)) Tj ET
-BT /F1 10 Tf 50 718 Td (Caso medio, arvore aproximadamente equilibrada O\(log n\)) Tj ET
-BT /F1 10 Tf 50 703 Td (BST degenerada, pior caso O\(n\)) Tj ET
-BT /F1 10 Tf 50 688 Td (Listagem em ordem O\(n\)) Tj ET
-BT /F1 10 Tf 50 673 Td (Enfileirar e desenfileirar O\(1\)) Tj ET
-BT /F1 10 Tf 50 658 Td (Exibir fila O\(q\)) Tj ET
-BT /F1 10 Tf 50 643 Td (Validar ou copiar texto O\(L\)) Tj ET
-BT /F1 10 Tf 50 628 Td (Memoria das estruturas O\(n + q\)) Tj ET
-BT /F1 10 Tf 50 603 Td (A BST nao e auto-balanceada. A ordem de insercao pode gerar uma arvore degenerada;) Tj ET
-BT /F1 10 Tf 50 588 Td (nesse caso, as operacoes da BST podem chegar a O\(n\).) Tj ET
-BT /F2 12 Tf 50 563 Td (6. Conclusao e ferramentas utilizadas) Tj ET
-BT /F1 10 Tf 50 546 Td (A implementacao aplica ponteiros, alocacao dinamica, modularizacao e as estruturas) Tj ET
-BT /F1 10 Tf 50 531 Td (solicitadas. Os testes automatizados confirmaram os casos principais da BST, da fila e da) Tj ET
-BT /F1 10 Tf 50 516 Td (listagem ordenada pelo menu. A principal limitacao e a ausencia de balanceamento automatico.) Tj ET
-BT /F1 10 Tf 50 491 Td (Utilizei uma ferramenta de IA como apoio para organizar o repositorio, redigir e revisar o) Tj ET
-BT /F1 10 Tf 50 476 Td (codigo, o roteiro de testes e este relatorio. O uso foi registrado no repositorio; o codigo) Tj ET
-BT /F1 10 Tf 50 461 Td (deve) Tj ET
-BT /F1 10 Tf 50 446 Td (ser explicado individualmente durante a demonstracao da disciplina.) Tj ET
+BT /F1 10 Tf 50 773 Td (Seja n o numero de registros na BST, h sua altura, q o numero de IDs na fila e L o tamanho) Tj ET
+BT /F1 10 Tf 50 758 Td (do texto.) Tj ET
+BT /F1 10 Tf 50 735 Td (Operacao - Complexidade) Tj ET
+BT /F1 10 Tf 50 720 Td (Busca, insercao e remocao na BST - O\(h\)) Tj ET
+BT /F1 10 Tf 50 705 Td (Caso medio equilibrado - O\(log n\)) Tj ET
+BT /F1 10 Tf 50 690 Td (BST degenerada, pior caso - O\(n\)) Tj ET
+BT /F1 10 Tf 50 675 Td (Percurso em ordem - O\(n\)) Tj ET
+BT /F1 10 Tf 50 660 Td (Enfileirar e desenfileirar - O\(1\)) Tj ET
+BT /F1 10 Tf 50 645 Td (Exibir fila - O\(q\)) Tj ET
+BT /F1 10 Tf 50 630 Td (Validar ou copiar texto - O\(L\)) Tj ET
+BT /F1 10 Tf 50 615 Td (Memoria - O\(n + q\)) Tj ET
+BT /F1 10 Tf 50 592 Td (A BST nao e auto-balanceada. A ordem de insercao pode produzir uma arvore degenerada; nesse) Tj ET
+BT /F1 10 Tf 50 577 Td (caso, operacoes chegam a O\(n\).) Tj ET
+BT /F2 12 Tf 50 554 Td (6. Conclusao e ferramentas utilizadas) Tj ET
+BT /F1 10 Tf 50 537 Td (A implementacao aplica ponteiros, alocacao dinamica, modularizacao e as estruturas) Tj ET
+BT /F1 10 Tf 50 522 Td (solicitadas. A suite e o workflow confirmaram os casos principais da BST, da fila, da) Tj ET
+BT /F1 10 Tf 50 507 Td (validacao de texto longo, da fila vazia e da listagem ordenada. A principal limitacao e a) Tj ET
+BT /F1 10 Tf 50 492 Td (ausencia de balanceamento automatico.) Tj ET
+BT /F1 10 Tf 50 469 Td (Utilizei uma ferramenta de IA como apoio para organizar o repositorio e redigir/revisar) Tj ET
+BT /F1 10 Tf 50 454 Td (partes do codigo, dos testes e deste relatorio. O uso foi registrado no repositorio. O) Tj ET
+BT /F1 10 Tf 50 439 Td (codigo deve ser explicado durante a demonstracao.) Tj ET
 BT /F1 8 Tf 50 35 Td (Relatorio tecnico - Locais urbanos | Pagina 3 de 3) Tj ET
 endstream
 endobj
@@ -104,13 +108,13 @@ xref
 0000000128 00000 n 
 0000000225 00000 n 
 0000000327 00000 n 
-0000002297 00000 n 
-0000002433 00000 n 
-0000004475 00000 n 
-0000004611 00000 n 
-0000006507 00000 n 
+0000002278 00000 n 
+0000002414 00000 n 
+0000004553 00000 n 
+0000004689 00000 n 
+0000006590 00000 n 
 trailer
 << /Size 11 /Root 1 0 R >>
 startxref
-6644
+6727
 %%EOF
