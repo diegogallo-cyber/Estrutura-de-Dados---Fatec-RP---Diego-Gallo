@@ -9,11 +9,9 @@ gcc -std=c11 -Wall -Wextra -pedantic -Iinclude tests/test_estruturas.c src/bst.c
 ./teste_estruturas
 ```
 
-A saída esperada é `Todos os testes automatizados passaram.`. Registre no relatório a saída que você observar ao executar o comando no seu ambiente.
+A suíte verifica inserção e busca na BST, duplicidade e ID inválido, a ordem crescente dos nós, remoção de folha, nó com um filho e nó com dois filhos, busca/remoção de ID ausente, além da ordem FIFO, IDs repetidos e operações sobre fila vazia. O workflow em `.github/workflows/testes.yml` compila o programa e verifica a listagem em ordem usando o menu.
 
-A suíte cobre inserção e busca na BST, ID repetido e inválido, remoção de folha, nó com um filho e nó com dois filhos, busca e remoção de ID ausente, além da ordem FIFO, repetição de IDs e operações sobre fila vazia.
-
-## Testes manuais do menu
+## Testes manuais de entrada e menu
 
 | Caso | Ações | Resultado esperado |
 |---|---|---|
@@ -21,18 +19,17 @@ A suíte cobre inserção e busca na BST, ID repetido e inválido, remoção de 
 | Texto longo | Informar mais de 79 caracteres | Rejeição sem corromper a entrada seguinte |
 | ID textual | Digitar letras no campo de ID | Mensagem de ID inválido; programa continua |
 | ID fora do intervalo | Informar um número maior que `INT_MAX` | Rejeição sem conversão inválida |
-| Ordenação | Cadastrar IDs 40, 20, 60 e escolher listagem | Mostrar 20, 40, 60 |
-| Remoção | Remover ID inexistente e depois um existente | Mensagens adequadas; menu continua |
+| Remoção ausente | Remover ID que não existe | Informar não encontrado e manter o programa ativo |
 | Fila independente | Enfileirar ID positivo que não esteja na BST | ID aceito |
 | Fila vazia | Exibir ou remover em fila vazia | Avisar e continuar |
 | Encerramento | Encerrar com elementos nas estruturas | Todos os nós são liberados |
 
 ## Evidências observadas
 
-Preencha após executar no seu ambiente:
+Preencha os dados do seu ambiente e resultados locais:
 
 - Sistema operacional:
 - Compilador e versão:
 - Comandos usados:
-- Saída observada dos testes automatizados:
-- Casos manuais executados e resultados:
+- Resultado do workflow do GitHub Actions:
+- Casos manuais executados e resultados observados:

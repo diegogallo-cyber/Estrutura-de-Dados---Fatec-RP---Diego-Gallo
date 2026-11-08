@@ -14,6 +14,17 @@ static Registro registro(int id) {
     return r;
 }
 
+static void verificar_ordem(const NoBST *raiz, int *anterior, int *quantidade) {
+    if (raiz == NULL) {
+        return;
+    }
+    verificar_ordem(raiz->esquerda, anterior, quantidade);
+    assert(raiz->registro.id > *anterior);
+    *anterior = raiz->registro.id;
+    ++*quantidade;
+    verificar_ordem(raiz->direita, anterior, quantidade);
+}
+
 static void testar_bst(void) {
     NoBST *raiz = NULL;
     Registro r40 = registro(40);
@@ -22,17 +33,24 @@ static void testar_bst(void) {
     Registro r10 = registro(10);
     Registro r30 = registro(30);
     Registro repetido = registro(40);
+    int anterior;
+    int quantidade;
 
-    assert(bst_inserir(&raiz, &r40) == 1);
-    assert(bst_inserir(&raiz, &r20) == 1);
-    assert(bst_inserir(&raiz, &r60) == 1);
-    assert(bst_inserir(&raiz, &r10) == 1);
-    assert(bst_inserir(&raiz, &r30) == 1);
-    assert(bst_inserir(&raiz, &repetido) == 0);
-    assert(bst_inserir(&raiz, &(Registro){.id = 0}) == -1);
+    assert(bst_inserir(&raiz, &r40) == BST_OK);
+    assert(bst_inserir(&raiz, &r20) == BST_OK);
+    assert(bst_inserir(&raiz, &r60) == BST_OK);
+    assert(bst_inserir(&raiz, &r10) == BST_OK);
+    assert(bst_inserir(&raiz, &r30) == BST_OK);
+    assert(bst_inserir(&raiz, &repetido) == BST_DUPLICADO);
+    assert(bst_inserir(&raiz, &(Registro){.id = 0}) == BST_ERRO);
     assert(bst_buscar(raiz, 30) != NULL);
     assert(bst_buscar(raiz, 30)->id == 30);
     assert(bst_buscar(raiz, 999) == NULL);
+
+    anterior = 0;
+    quantidade = 0;
+    verificar_ordem(raiz, &anterior, &quantidade);
+    assert(quantidade == 5);
 
     /* Folha 10. */
     assert(bst_remover(&raiz, 10) == 1);
@@ -51,6 +69,11 @@ static void testar_bst(void) {
 
     assert(bst_remover(&raiz, 1234) == 0);
     assert(bst_remover(&raiz, 0) == 0);
+
+    anterior = 0;
+    quantidade = 0;
+    verificar_ordem(raiz, &anterior, &quantidade);
+    assert(quantidade == 2);
     bst_liberar(raiz);
 }
 

@@ -27,6 +27,9 @@ src/entrada.c
 src/main.c
 tests/test_estruturas.c
 docs/roteiro-e-testes.md
+docs/uso-de-ia.md
+docs/relatorio-tecnico.pdf (a gerar após registrar os resultados observados)
+.github/workflows/testes.yml
 ```
 
 ## Compilar e executar
@@ -52,7 +55,7 @@ gcc -std=c11 -Wall -Wextra -pedantic -Iinclude tests/test_estruturas.c src/bst.c
 ./teste_estruturas
 ```
 
-O programa de testes verifica inserção, busca, duplicidade, remoção de folha/nó com um filho/nó com dois filhos, IDs inválidos e comportamento FIFO da fila. Os testes interativos de validação e do menu estão no roteiro em `docs/roteiro-e-testes.md`.
+A suíte verifica inserção, busca, IDs repetidos e inválidos, ordem da BST, remoção de folha/nó com um filho/nó com dois filhos e comportamento FIFO da fila. O workflow do GitHub Actions também compila o programa e faz um teste de listagem em ordem pelo menu.
 
 ## Complexidade
 

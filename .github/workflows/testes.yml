@@ -1,0 +1,24 @@
+name: Testes C11
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  compilar-e-testar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar o repositório
+        uses: actions/checkout@v4
+      - name: Compilar o programa
+        run: gcc -std=c11 -Wall -Wextra -pedantic -Iinclude src/main.c src/bst.c src/fila.c src/entrada.c -o locais
+      - name: Compilar e executar testes das estruturas
+        run: |
+          gcc -std=c11 -Wall -Wextra -pedantic -Iinclude tests/test_estruturas.c src/bst.c src/fila.c -o teste_estruturas
+          ./teste_estruturas
+      - name: Conferir listagem em ordem pelo menu
+        run: |
+          output=$(printf '%s\n' 1 40 Praca_Central Cultura Centro 1 20 Parque Norte Lazer Sul 1 60 Museu Historia Centro 4 8 | ./locais)
+          ids=$(printf '%s\n' "$output" | sed -n 's/^ID: \([0-9][0-9]*\) |.*/\1/p' | tr '\n' ' ' | sed 's/ $//')
+          test "$ids" = "20 40 60"
