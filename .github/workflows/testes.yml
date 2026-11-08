@@ -23,3 +23,14 @@ jobs:
           ids=$(printf '%s\n' "$output" | sed -n 's/.*ID: \([0-9][0-9]*\) |.*/\1/p' | tr '\n' ' ' | sed 's/ $//')
           echo "IDs listados: $ids"
           test "$ids" = "20 40 60"
+      - name: Validar entrada inválida e fila vazia
+        run: |
+          long_text=$(printf '%080d' 0 | tr '0' 'x')
+          invalid_id_output=$(printf '%s\n' 1 abc 8 | ./locais)
+          printf '%s\n' "$invalid_id_output" | grep -q 'ID inválido'
+          long_text_output=$(printf '%s\n' 1 5 "$long_text" 8 | ./locais)
+          printf '%s\n' "$long_text_output" | grep -q 'Texto muito longo'
+          queue_output=$(printf '%s\n' 5 999 6 6 7 8 | ./locais)
+          printf '%s\n' "$queue_output" | grep -q 'ID 999 removido'
+          printf '%s\n' "$queue_output" | grep -q 'Fila vazia'
+          echo "Validacao de ID, tamanho de texto e fila vazia passou."
