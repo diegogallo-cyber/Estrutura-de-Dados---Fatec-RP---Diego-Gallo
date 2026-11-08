@@ -28,7 +28,8 @@ src/main.c
 tests/test_estruturas.c
 docs/roteiro-e-testes.md
 docs/uso-de-ia.md
-docs/relatorio-tecnico.pdf (a gerar após registrar os resultados observados)
+docs/relatorio-tecnico.md
+docs/relatorio-tecnico.pdf
 .github/workflows/testes.yml
 ```
 
@@ -55,7 +56,7 @@ gcc -std=c11 -Wall -Wextra -pedantic -Iinclude tests/test_estruturas.c src/bst.c
 ./teste_estruturas
 ```
 
-A suíte verifica inserção, busca, IDs repetidos e inválidos, ordem da BST, remoção de folha/nó com um filho/nó com dois filhos e comportamento FIFO da fila. O workflow do GitHub Actions também compila o programa e faz um teste de listagem em ordem pelo menu.
+A suíte verifica inserção, busca, IDs repetidos e inválidos, ordem da BST, remoção de folha/nó com um filho/nó com dois filhos e comportamento FIFO da fila. O workflow do GitHub Actions compila o programa e verifica a listagem em ordem pelo menu.
 
 ## Complexidade
 
@@ -63,4 +64,4 @@ Para uma BST sem balanceamento, inserir, buscar e remover custam O(h), onde h é
 
 ## Relatório e autoria
 
-O enunciado pede um relatório técnico em PDF de 2 a 4 páginas. Registre nele as ferramentas utilizadas (incluindo o apoio de IA), os testes que você realmente executou e os resultados observados. O roteiro de testes ajuda a coletar essa evidência. O histórico Git deve representar o desenvolvimento real; não invente etapas ou resultados.
+O relatório técnico está em `docs/relatorio-tecnico.pdf` e também em Markdown. Registre nele as ferramentas utilizadas (incluindo o apoio de IA), os testes que você realmente executou e os resultados observados. O roteiro em `docs/roteiro-e-testes.md` apresenta os testes manuais recomendados. O histórico Git deve representar o desenvolvimento real; não invente etapas ou resultados.
